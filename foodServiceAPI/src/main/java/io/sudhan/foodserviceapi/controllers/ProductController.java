@@ -84,7 +84,7 @@ public class ProductController {
         return ResponseEntity.badRequest().build();
     }
 
-    @PutMapping("/food-items/")
+    @PutMapping("/food-items/{id}")
     public ResponseEntity<?> updateFoodItem(@PathVariable("id") UUID id, @RequestBody Product product, HttpServletRequest request){
         // Check if food-item is valid
         if (!product.isValid()) {
