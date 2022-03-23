@@ -59,8 +59,8 @@ public class ProductServiceImple implements ProductService {
     }
 
     @Override
-    public List<Product> findByCategory(ProductCategory category) {
-        return productRepository.findAllByCategory(category);
+    public Iterable<Product> getAllByCategory(Long categoryId) {
+        return productRepository.findAllByCategory_Id(categoryId);
     }
 
 }
