@@ -21,6 +21,6 @@ public interface ProductService {
 
     boolean delete(UUID id);
 
-    List<Product> findByCategory(ProductCategory productCategory);
+    Iterable<Product> getAllByCategory(Long categoryId);
 
 }

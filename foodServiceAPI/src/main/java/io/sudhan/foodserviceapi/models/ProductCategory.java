@@ -21,6 +21,9 @@ public class ProductCategory {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "imageurl")
+    private String imageurl;
+
     public ProductCategory(){}
 
     public ProductCategory(Long id, String name) {

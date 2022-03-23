@@ -65,7 +65,7 @@ public class ProductController {
         Optional<ProductCategory> productCategory = productCategoryService.getById(id);
 
         if (productCategory.isPresent()){
-            List<Product> productListByCategory = this.productService.findByCategory(productCategory.get());
+            Iterable<Product> productListByCategory = this.productService.getAllByCategory(productCategory.get().getId());
             return ResponseEntity.ok(productListByCategory);
         }
         logger.debug("Requested category doesn't exist");
