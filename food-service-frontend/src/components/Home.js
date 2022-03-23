@@ -1,9 +1,9 @@
+import ProductList from "./Product/ProductList";
+
 const Home = () => {
     
     return (
-        <div>
-            <p>Init</p>
-        </div>
+        <ProductList/>
     );
 }
 
