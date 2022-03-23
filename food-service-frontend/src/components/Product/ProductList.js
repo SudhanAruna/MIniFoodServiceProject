@@ -37,9 +37,9 @@ const ProductList = () => {
 
 
     return (
-        <div className="max-w-7xl mx0auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-24">
             { productList ? (
-                <div className="flex flex-wrap -mx-1 lg:-mx-4">
+                <div className="flex flex-wrap mx-1 ">
                     <Products productList={productList ? productList: []}/>
                 </div>
             ): (
@@ -47,7 +47,6 @@ const ProductList = () => {
             )}
         </div>
     );
-
 
 }
 

@@ -65,10 +65,10 @@ class ProductService {
             .then(([response, json]) => {
                 if (!response.ok) {
                     console.log("Get Response FAILED: Status: "+response.status);
-                    return { sucess: false, error: json };
+                    return { success: false, error: json };
                 }
                 console.log("Get Response OK");
-                return { sucess: true, data: json};
+                return { success: true, data: json};
             })
             .catch( (ex) => {
                 console.log("Exception Message \n" +ex.message);

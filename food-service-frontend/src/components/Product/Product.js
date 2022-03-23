@@ -8,6 +8,8 @@ const Products = (productList) => {
     
     const productListData = productList.productList;
 
+    
+
     return (
         <>
         { productListData.map( (item) => (

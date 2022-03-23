@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
+import ProductDetail from "./components/Product/ProductDetail";
+import ProductList from "./components/Product/ProductList";
 
 function App() {
   
@@ -14,6 +16,8 @@ function App() {
             <Header/>
             <Routes>
               <Route path="/" element={<Home/>} />
+              <Route path="/category/:categoryId" element={ <ProductList/>} />
+              <Route path="/products/:id" element={ <ProductDetail/> } />
             </Routes>
           </div>
       </BrowserRouter>
