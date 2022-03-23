@@ -1,5 +1,6 @@
 package io.sudhan.foodserviceapi.services;
 
+import io.sudhan.foodserviceapi.dataAccess.ProductCategoryRepository;
 import io.sudhan.foodserviceapi.dataAccess.ProductRepository;
 import io.sudhan.foodserviceapi.models.Product;
 import io.sudhan.foodserviceapi.models.ProductCategory;
@@ -32,10 +33,12 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository repository;
+    private ProductCategoryRepository categoryRepository;
 
     @InjectMocks
 //    @Autowired
     private ProductServiceImple service;
+
 
     @BeforeAll
     public static void setup(){
@@ -90,7 +93,7 @@ public class ProductServiceTest {
 
     @Test
     @DisplayName("Saving a new product")
-    public void createProduct() {
+    public void addProduct() {
         given(repository.save(testProduct)).willReturn(testProduct);
 
         Product result = service.add(testProduct);
@@ -116,7 +119,7 @@ public class ProductServiceTest {
 
     @Test
     @DisplayName("Get non exist product by ID")
-    public void getProductWithoutExist() {
+    public void getProductWithoutExistId() {
         given(repository.findById(nonExistId)).willReturn(Optional.empty());
 
         Optional<Product> result = service.get(nonExistId);
@@ -126,19 +129,18 @@ public class ProductServiceTest {
     }
 
 
-//    @Test
-//    @DisplayName("Get products list for specific category")
-//    public void getProductsByCategory() {
-//        given(repository.findAllByCategory(ProductCategory.FRUITS)).willReturn(productList);
-//
-//        List<Product> result = service.findByCategory(ProductCategory.FRUITS);
-//
-//        assertThat(result).isNotNull();
-//        assertThat(result.toArray().length).isEqualTo(productList.toArray().length);
-//        for(Product resultProduct: result){
-//            assertThat(resultProduct.getCategory()).isEqualTo(ProductCategory.FRUITS);
-//        }
-//    }
+    @Test
+    @DisplayName("Get products list for specific category")
+    public void getProductsByCategory() {
+        given(repository.findAllByCategory_Id(testProduct.getCategory().getId())).willReturn(productList);
+
+        Iterable<Product> result = service.getAllByCategory(testProduct.getCategory().getId());
+
+        assertThat(result).isNotNull();
+        for(Product resultProduct: result){
+            assertThat(resultProduct.getCategory()).isEqualTo(testProduct.getCategory());
+        }
+    }
 
 
 

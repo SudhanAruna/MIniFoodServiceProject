@@ -3,6 +3,7 @@ package io.sudhan.foodserviceapi.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.sudhan.foodserviceapi.models.Product;
 import io.sudhan.foodserviceapi.services.ProductService;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,12 +19,14 @@ import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import javax.print.attribute.standard.Media;
 import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
@@ -41,7 +44,9 @@ public class ProductControllerTest {
 
     private static final String URI = "/food-items";
 
-    @BeforeEach
+
+
+    @BeforeAll
     public void setup(){
         JacksonTester.initFields(this, new ObjectMapper());
         mockMvc = MockMvcBuilders.standaloneSetup(productController)
@@ -57,23 +62,18 @@ public class ProductControllerTest {
 //        productService.add(product);
     }
 
+    // TODO: Complete the test createProduct method
 //    @Test
-//    public void getProduct() throws Exception{
+//    @DisplayName("Returns created product")
+//    public void createProduct() throws Exception {
+//        given(productService.add(product)).willReturn(product);
 //
-//        productService.add(product);
-//
-//        given(productService.get(product.getId())).willReturn(Optional.of(product));
-//
-//        mockMvc.getDispatcherServlet().getHandlerMappings();
-//        ResultActions results = mockMvc.perform(
-//                get("/food-items/{id}", "ef8e7f6f-858b-4c14-82d5-00e98eb6474b")
-//                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON)
+//        ResultActions result = mockMvc.perform(
+//                post("/food-items")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(product)
 //                        .accept(MediaType.APPLICATION_JSON)
 //        );
-//
-//        results.andExpect(status().isOk());
-//
-//
 //    }
 
 
